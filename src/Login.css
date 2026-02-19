@@ -1,0 +1,203 @@
+/* Login.css */
+
+/* 1. RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 2. THE MAIN CONTAINER */
+/* Uses Flexbox to perfectly center the card on the screen */
+.portal-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #0f172a; /* Deep dark blue base */
+  position: relative;
+  transition: background 0.8s ease;
+  overflow: hidden;
+}
+
+/* Theme shifts for the background when toggling */
+.theme-blue { background: linear-gradient(135deg, #0f172a, #1e293b); }
+.theme-green { background: linear-gradient(135deg, #064e3b, #022c22); }
+
+/* 3. CREATIVE ELEMENTS: Animated Blobs */
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, rgba(78, 115, 223, 0.4), rgba(28, 200, 138, 0.4));
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: 0;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.blob-1 { top: -10%; left: -5%; }
+.blob-2 { bottom: -10%; right: -5%; }
+
+.theme-green .blob {
+  transform: translate(200px, -100px) rotate(90deg);
+  background: linear-gradient(135deg, #1cc88a, #34d399);
+}
+
+/* 4. THE PORTAL CARD */
+/* This is the core layout fix. */
+.portal-card {
+  position: relative;
+  z-index: 10;
+  width: 950px;
+  height: 580px;
+  display: flex; /* Fixes the side-by-side issue */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* 5. LEFT PANEL (The Info Section) */
+.portal-left {
+  flex: 1; /* Takes up 50% of the card */
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  background: linear-gradient(135deg, rgba(78, 115, 223, 0.8), rgba(28, 200, 138, 0.8));
+  transition: 0.6s ease-in-out;
+  z-index: 2;
+}
+
+.portal-left.active {
+  background: linear-gradient(135deg, rgba(28, 200, 138, 0.8), rgba(78, 115, 223, 0.8));
+}
+
+.badge {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.portal-left h1 { font-size: 40px; margin-bottom: 15px; font-weight: 800; }
+.portal-left p { font-size: 16px; line-height: 1.6; opacity: 0.9; margin-bottom: 30px; }
+
+.switch-btn {
+  width: fit-content;
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  background: white;
+  color: #1e293b;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.switch-btn:hover { transform: scale(1.05); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
+
+/* 6. RIGHT PANEL (The Form Section) */
+.portal-right {
+  flex: 1; /* Takes up the other 50% */
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sliding logic */
+.form-wrapper {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+.login-view { transform: translateX(0%); }
+.register-view { transform: translateX(-50%); }
+
+.form {
+  width: 50%;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-header { margin-bottom: 30px; }
+.form-header h2 { color: #1e293b; font-size: 28px; margin-bottom: 5px; }
+.form-header span { color: #64748b; font-size: 14px; }
+
+/* 7. INPUTS & BUTTONS */
+input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4e73df;
+  box-shadow: 0 0 0 4px rgba(78, 115, 223, 0.1);
+}
+
+.portal-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #1e293b;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+
+.portal-btn:hover { background: #0f172a; transform: translateY(-1px); }
+
+/* 8. PASSWORD STRENGTH METER */
+.password-meter-container { width: 100%; margin-bottom: 20px; }
+.strength-bar {
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  margin-top: -10px;
+  overflow: hidden;
+}
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  background: #ef4444;
+  transition: all 0.5s ease;
+}
+.strength-fill.full { background: #10b981; }
+
+/* 9. RESPONSIVE DESIGN */
+@media (max-width: 950px) {
+  .portal-card {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+  .portal-left { padding: 40px; }
+  .form-wrapper { width: 100%; flex-direction: column; transform: none !important; }
+  .form { width: 100%; padding: 40px; }
+}
