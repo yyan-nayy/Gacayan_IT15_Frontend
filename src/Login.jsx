@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 
-export default function Login() {
+export default function Login({ onLogin }) {
   const [isLogin, setIsLogin] = useState(true);
   const [password, setPassword] = useState("");
   const [strength, setStrength] = useState(0);
 
-  // Unique Feature: Password Strength Logic
   useEffect(() => {
     if (password.length === 0) setStrength(0);
     else if (password.length < 6) setStrength(30);
@@ -16,12 +15,15 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(isLogin ? "Welcome back, Scholar! 🏛️" : "Journey Started! Check your Email ✉️");
+    if (isLogin) {
+      onLogin();
+    }
   };
 
   return (
-    <div className={`portal-container ${isLogin ? "theme-blue" : "theme-green"}`}>
-      {/* CREATIVE ELEMENT: Floating background orbs */}
+    <div className={`portal-container ${isLogin ? "theme-blue" : "theme-green"}`}>{
+  
+      }
       <div className="blob blob-1"></div>
       <div className="blob blob-2"></div>
 
@@ -73,8 +75,9 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required 
-                />
-                {/* UNIQUE FEATURE: Visual Strength Bar */}
+                />{
+                  
+                }
                 <div className="strength-bar">
                   <div 
                     className={`strength-fill ${strength === 100 ? 'full' : ''}`} 

@@ -1,6 +1,3 @@
-/* Login.css */
-
-/* 1. RESET & BASE STYLES */
 * {
   margin: 0;
   padding: 0;
@@ -8,25 +5,22 @@
   font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* 2. THE MAIN CONTAINER */
-/* Uses Flexbox to perfectly center the card on the screen */
 .portal-container {
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #0f172a; /* Deep dark blue base */
+  background: #0f172a;
   position: relative;
   transition: background 0.8s ease;
   overflow: hidden;
 }
 
-/* Theme shifts for the background when toggling */
 .theme-blue { background: linear-gradient(135deg, #0f172a, #1e293b); }
 .theme-green { background: linear-gradient(135deg, #064e3b, #022c22); }
 
-/* 3. CREATIVE ELEMENTS: Animated Blobs */
+
 .blob {
   position: absolute;
   width: 500px;
@@ -46,14 +40,12 @@
   background: linear-gradient(135deg, #1cc88a, #34d399);
 }
 
-/* 4. THE PORTAL CARD */
-/* This is the core layout fix. */
 .portal-card {
   position: relative;
   z-index: 10;
   width: 950px;
   height: 580px;
-  display: flex; /* Fixes the side-by-side issue */
+  display: flex;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -62,9 +54,8 @@
   overflow: hidden;
 }
 
-/* 5. LEFT PANEL (The Info Section) */
 .portal-left {
-  flex: 1; /* Takes up 50% of the card */
+  flex: 1;
   padding: 60px;
   display: flex;
   flex-direction: column;
@@ -108,15 +99,13 @@
 
 .switch-btn:hover { transform: scale(1.05); box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
 
-/* 6. RIGHT PANEL (The Form Section) */
 .portal-right {
-  flex: 1; /* Takes up the other 50% */
+  flex: 1;
   background: #ffffff;
   position: relative;
   overflow: hidden;
 }
 
-/* Sliding logic */
 .form-wrapper {
   display: flex;
   width: 200%;
@@ -139,7 +128,6 @@
 .form-header h2 { color: #1e293b; font-size: 28px; margin-bottom: 5px; }
 .form-header span { color: #64748b; font-size: 14px; }
 
-/* 7. INPUTS & BUTTONS */
 input {
   width: 100%;
   padding: 14px;
@@ -172,7 +160,6 @@ input:focus {
 
 .portal-btn:hover { background: #0f172a; transform: translateY(-1px); }
 
-/* 8. PASSWORD STRENGTH METER */
 .password-meter-container { width: 100%; margin-bottom: 20px; }
 .strength-bar {
   width: 100%;
@@ -190,7 +177,6 @@ input:focus {
 }
 .strength-fill.full { background: #10b981; }
 
-/* 9. RESPONSIVE DESIGN */
 @media (max-width: 950px) {
   .portal-card {
     flex-direction: column;
